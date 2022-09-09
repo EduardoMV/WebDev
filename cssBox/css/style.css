@@ -1,0 +1,31 @@
+div {
+    height: 200px;
+    width: 200px;
+    /*display: inline-block;*/
+    text-align: center;
+}
+
+.top-container{
+    background-color: blue;
+    border-style: solid;
+    border-width: 10px;
+    padding: 20px;
+}
+
+.mid-container{
+    position: relative;
+    left: 260px;
+    /* Other option: margin-left: 260px*/
+    background-color: red;
+    border: 20px solid black;
+    /*display: none; desaparece la cosa*/
+    /*visibility: hidden; la oculta pero existe*/
+    font-family: sans-serif; /* Le quita lo picudo */
+}
+
+.low-container{
+    position: sticky;
+    left: 500px;
+    background-color: yellow;
+    border: 10px solid black;
+}
