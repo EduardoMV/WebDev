@@ -34,5 +34,11 @@ var getPrimeFactors = function (n) {
     return sequence;
 };
 
+function get_result(){
+    let val = parseInt(document.getElementById('num').value);
+    let res = getPrimeFactors(val).join(" ");
+    document.getElementById('results').innerHTML = res;
+}
+
 // the prime factors for this number are: [ 2, 3, 5, 7, 11, 13 ]
 console.log(getPrimeFactors(30030));
