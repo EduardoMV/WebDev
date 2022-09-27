@@ -5,12 +5,20 @@
     <script type="text/javascript" src="prime_factors.js"></script>
 </head>
 <body>
-<form id="form1" runat="server">
+<div>
     <div>
         <input type="text" id="num" />
-        <button id="btn" onclick="getPrimeFactors(30030)">
+        <button id="btn" onclick="get_result()">
             Click To Get The Prime Factors</button>
     </div>
-</form>
+    <span id="results"></span>
+    <script>
+        function get_result(){
+            let val = parseInt(document.getElementById('num').value);
+            let res = getPrimeFactors(val).join(" ");
+            document.getElementById('results').innerHTML = res;
+        }
+    </script>
+</div>
 </body>
 </html>
