@@ -1,0 +1,23 @@
+{
+  "name": "node-modules",
+  "version": "1.0.0",
+  "description": "WebDev module excercises",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EduardoMV/WebDev.git"
+  },
+  "author": "EduardoMV",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/EduardoMV/WebDev/issues"
+  },
+  "homepage": "https://github.com/EduardoMV/WebDev#readme",
+  "dependencies": {
+    "superheroes": "^3.0.0",
+    "supervillains": "^3.1.0"
+  }
+}
