@@ -38,7 +38,7 @@ function winner(){
     var audiop2 = new Audio('audio/P2.mp3');
     var audioMario = new Audio('audio/mario.mp3');
     var a = rand();
-    var b = rand();
+    var b = rand(); 
     imgDice(a, ".img1");
     imgDice(b, ".img2");
     if(a > b){
