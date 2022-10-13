@@ -1,9 +1,27 @@
 <%- include("partials/header"); -%> 
-    <img src="images/dice2.png" alt="lion">
+    <!-- <img src="images/dice2.png" alt="lion">
     <h1>Welcome to my landing page</h1>
     <form action="/students" method="get">
         <label for="name">Name</label>
         <input type="text" name="name" id="name" />
         <input type="submit" />
-    </form>
+    </form> -->
+    <h1>Home</h1>
+    <p> 
+        <%= startingContent %>
+    </p>
+
+    <% posts.forEach(function(post){ %>
+        <h1><%=post.title%></h1>
+        <p>
+            <% if(post.content.lenght > 100) { %>
+                <%=post.content.substring(0,100) + " ..."%>
+            <% } else { %>
+                <%= post.content %>
+            <%}%>
+            
+        <a href="/posts/<%=post.title%>"> Read More </a>
+        </p>
+
+    <% }) %>
     <%- include("partials/footer"); -%> 

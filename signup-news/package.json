@@ -1,0 +1,14 @@
+{
+  "name": "signup_news",
+  "version": "1.0.1",
+  "description": "Newsteller",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "EduardoMV",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
