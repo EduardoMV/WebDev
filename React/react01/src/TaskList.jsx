@@ -1,8 +1,10 @@
 import React, {useState} from "react";
+import processLogin from "./Login";
 
 function TaskList(){
     var [taskComplete, setTaskComplete] = useState(false);
     var [elementCount, setElementCount] = useState(1);
+    var [element, setElement] = useState({element: ""})
 
     // function completeTask() {
     //     setTaskComplete(true);
@@ -13,7 +15,7 @@ function TaskList(){
     // }
 
     function status () {
-        setTaskComplete(!taskComplete)
+        setTaskComplete(!taskComplete);
     }
 
     function addItem() {
@@ -26,13 +28,33 @@ function TaskList(){
         }   
     }
 
+    function handleUpdate(e) {
+        const { value, name } = e.target;
+    
+        setElement((prevValue) => {
+        if(name === "username") { 
+            return { ...prevValue, username: value};
+        } else{
+            return{ ...prevValue, password: value};
+        }
+        });
+    }
+
     return(
         <div>
+            <form action="">
+                <input name = "List" type= "text" placeholder= "Add element" onChange={handleUpdate} />
+                <button type= "submit" onClick={processLogin}>
+                    Add
+                </button>
+                <button type= "submit" onClick={processLogin}>
+                    Clear
+                </button>
+            </form>
             <ul>
-                <li>
-
-                    {elementCount + " "}
-                    <span style={taskComplete ? {textDecoration: "line-through"} : null} onClick={status}>
+                {elementCount + " "}
+                <li style={taskComplete ? {textDecoration: "line-through"} : null} onClick={status}>
+                    <span >
                         Buy Milk
                     </span>
                     

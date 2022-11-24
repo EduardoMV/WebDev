@@ -103,11 +103,13 @@ function createCard(contact) {
 function App(){
   var subName = "B";
   var [isLoggedIn, setIsLoggedIn] = useState(false);
+  var [username, setUserName] = useState({});
 
   function renderContent(subName){
     return (
       <div>
         <hr />
+        <h2>Hello {username.name}</h2>
         <h1>My contacts: </h1>
         {contacts.filter((contact) =>{
             return contact.name.includes(subName) && contact.phone.includes("33");
@@ -118,7 +120,8 @@ function App(){
     );
   }
 
-  function logUser() {
+  function logUser(username) {
+    setUserName(username);
     setIsLoggedIn(true);
   }
 

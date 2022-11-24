@@ -1,35 +1,69 @@
 import React from "react";
 import { useState } from "react";
+import axios from "axios";
 
-function Login (props) {
-    var [username, setUserName] = useState("");
-    var [password, setPassword] = useState("");
-    var [error, setError] = useState("");
+function Login(props) {
 
-    function recordUser(e){
-        setUserName(e.target.value);
-        // console.log(username);
-    }
-    function recordPassword(e){
-        setPassword(e.target.value);
-        // console.log(password);
-    }
-    function processLogin() {
-        if(username === "admin" && password === "password"){
-            props.handler();
-        } else {
-            setError("Wrong login");
-        }
-    }
+  var [register, setRegister] = useState({
+    username: "",
+    password: "",
+    name: "",
+    lname: "",
+  });
+  var [error, setError] = useState("");
 
-    return(
-        <form action="">
-            <input type="text" placeholder="Username" onChange={recordUser}/>
-            <input type="password" placeholder="Password" onChange={recordPassword}/>
-            <button type="submit" onClick={processLogin}> Log in </button>
-            {error}
-        </form>
-    )
+  function handleUpdate(e) {
+    const { value, name } = e.target;
+
+    setRegister((prevValue) => {
+    if(name === "username") {
+        return { ...prevValue, username: value};
+    } else{
+        return{ ...prevValue, password: value};
+    }
+    });
+  }
+
+  function processLogin(e) {
+    e.preventDefault();
+    var usrName = register.username;
+    var usrPass = register.password;
+    axios.post("/Login", {user: usrName, pass: usrPass}).then((res) => {
+      var data = res.data;
+      if(!data.hasOwnProperty("error")){
+        register.name = data.name;
+        register.lname = data.lname;
+        props.handler(register);
+      } else {
+        setError(data.message);
+      }
+    }).catch((err => {
+      console.error(err.error);
+    }));
+    // axios.get("/login/" + usrName + "/" + usrPass).then((res) => {
+    //   var data = res.data;
+    //   if(!data.hasOwnProperty("error")){
+    //     register.name = data.name;
+    //     register.lname = data.lname;
+    //     props.handler(register);
+    //   } else {
+    //     setError(data.message);
+    //   }
+    // }).catch((err => {
+    //   console.error(err.error);
+  }
+
+  return (
+    <form action="">
+      <input name = "username" type="text" placeholder="Username" onChange={handleUpdate} />
+      <input name = "password" type="password" placeholder="Password" onChange={handleUpdate} />
+      <button type="submit" onClick={processLogin}>
+        {" "}
+        Log in{" "}
+      </button>
+      {error}
+    </form>
+  );
 }
 
-export default Login
+export default Login;
